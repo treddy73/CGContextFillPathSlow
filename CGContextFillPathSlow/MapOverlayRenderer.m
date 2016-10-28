@@ -53,8 +53,9 @@ static CGColorRef colorRefs[kColorRefsCount];
     CGContextSetStrokeColorWithColor(context, [[UIColor yellowColor] CGColor]);
     CGContextStrokeRect(context, [self rectForMapRect:mapRect]);
     
+    NSDate* endDate = [NSDate date];
     dispatch_async(dispatch_get_main_queue(), ^{
-        [mapOverlay accumulate:[[NSDate date] timeIntervalSince1970] - [startDate timeIntervalSince1970]];
+        [mapOverlay accumulate:[endDate timeIntervalSince1970] - [startDate timeIntervalSince1970]];
     });
 }
 
